@@ -49,3 +49,89 @@ class Car extends Vehicle{
 let myCar=new Car("Toyota","Camry");
 console.log(myCar.start());
 console.log(myCar.drive());
+
+//Encapsulation
+
+class BankAmount{
+  #balance=0;
+  deposit(amount){
+    this.#balance+=amount;
+    return this.#balance;
+  }
+  getBalance(){
+    return `$ ${this.#balance}`;
+  }
+}
+let account=new BankAmount();
+console.log(account.getBalance());
+
+//Abstraction
+
+class coffeMachine{
+  start(){
+    //call Db
+    //filter value
+    return "starting machine";
+  }
+  brewCofee(){
+    //complex logic
+    return `brewing coffee`;
+  }
+}
+
+let mymachine=new coffeMachine();
+console.log(mymachine.start());
+console.log(mymachine.brewCofee());
+
+
+//polymorphism
+
+class bird{
+  fly(){
+    return "bird is flying";
+  }
+}
+
+class penguin extends bird{
+  fly(){
+    return "penguin cannot fly";
+  }
+}
+
+let mybird=new bird();
+let mypenguin=new penguin();
+console.log(mybird.fly());
+console.log(mypenguin.fly());
+
+//static methods
+
+class calculator{
+  static add(a,b){
+    return a+b;
+  }
+}
+
+let miniCalculator=new calculator();
+//console.log(miniCalculator.add(5,10)); // This will throw an error because add is a static method and cannot be called on an instance of the class.
+console.log(calculator.add(5,10));
+
+
+//getters and setters
+
+class employee{
+  constructor(name,salary){
+    this.name=name;
+    this.salary=salary;
+  }
+  get empSalary(){
+    return this.salary;
+  }
+  set empSalary(salary){
+    this.salary=salary;
+  }
+}
+
+let emp=new employee("John",50000);
+console.log(emp.empSalary);
+emp.empSalary=60000;
+console.log(emp.empSalary);
